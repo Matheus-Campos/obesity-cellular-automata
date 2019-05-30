@@ -4,6 +4,8 @@
 
 This is a basic SIR Cellular Automata representation of obesity epidemy. "S" stands for "Susceptible", "I" stands for "Infected" and "R" stands for "Recovered" or "Removed", in case of obesity, we will ignore the Recovered part of the model because nobody is immune to obesity, so a person that had obesity before can become obese again.
 
+Link for the video presentation: [https://www.youtube.com/watch?v=3RWIII5I4rY](https://www.youtube.com/watch?v=3RWIII5I4rY)
+
 ## Rules
 
 Healthy cell:
