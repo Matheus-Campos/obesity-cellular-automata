@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './styles.css';
 
 import Cell from '../Cell';
 
-const CELL_SIZE = 20;
+const CELL_SIZE = 5;
 const WIDTH = 800;
 const HEIGHT = 600;
 
-class Game extends React.Component {
+class Game extends Component {
   constructor() {
     super();
     this.rows = HEIGHT / CELL_SIZE;
@@ -35,7 +35,7 @@ class Game extends React.Component {
   handleClick = (event) => {
     const elemOffset = this.getElementOffset();
     const offsetX = event.clientX - elemOffset.x;
-    const offsetY = event.clientY - elemOffset.y;
+    const offsetY = event.clientY;
 
     const x = Math.floor(offsetX / CELL_SIZE);
     const y = Math.floor(offsetY / CELL_SIZE);
@@ -72,7 +72,7 @@ class Game extends React.Component {
   handleRandom = () => {
     for (let y = 0; y < this.rows; y += 1) {
       for (let x = 0; x < this.cols; x += 1) {
-        this.board[y][x] = Math.random() >= 0.5;
+        this.board[y][x] = Math.random() <= 0.15;
       }
     }
 
@@ -112,12 +112,12 @@ class Game extends React.Component {
       for (let x = 0; x < this.cols; x += 1) {
         const neighbors = this.calculateNeighbors(this.board, x, y);
         if (this.board[y][x]) {
-          if (neighbors === 2 || neighbors === 3) {
+          if (neighbors >= 3) {
             newBoard[y][x] = true;
           } else {
             newBoard[y][x] = false;
           }
-        } else if (!this.board[y][x] && neighbors === 3) {
+        } else if (!this.board[y][x] && neighbors >= 4) {
           newBoard[y][x] = true;
         }
       }
